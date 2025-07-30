@@ -6,8 +6,16 @@ function agregarNombre(){
 
     let nuevoNombre = document.getElementById("amigo").value
 
-    nombreAmigos.push(nuevoNombre);
-     console.log(nombreAmigos);
+    if(nuevoNombre == ""){
+        alert("Por favor, inserte un nombre.")
+    }else{
+         nombreAmigos.push(nuevoNombre);
+         console.log(nombreAmigos);
+        limpiarCaja();
+    }
+
 }
 
-
+function limpiarCaja() {
+    document.getElementById("amigo").value = "";
+}
