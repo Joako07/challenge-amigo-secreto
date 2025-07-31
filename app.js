@@ -9,7 +9,7 @@ function agregarAmigo(){
     if(nuevoNombre === ""){
         alert("Por favor, inserte un nombre.");
         limpiarCaja();
-    }else if(evitarDuplicados(nuevoNombre) === false){
+    }else if(evitarDuplicados(nuevoNombre) === true){
         alert(`El nombre ${nuevoNombre} ya existe en la lista`)
         limpiarCaja();
     }else{
@@ -39,11 +39,16 @@ function imprimirLista(){
 }
 
 function evitarDuplicados(name){
+    
+    let bandera = 0;
 
     for(let i = 0; i< nombreAmigos.length; i++){
         if(name === nombreAmigos[i]){
-           return false;
+          bandera = 1 ;
+          break;
         }
-        return true;
-    }
+          bandera = 0;
+        }
+
+    return bandera == 1? true : false;
 }
