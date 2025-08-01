@@ -4,6 +4,7 @@ let nombreAmigos = [];
 
 function agregarAmigo() {
 
+    asignarTextos('resultado', "");
     nuevoNombre = document.getElementById("amigo").value;
 
     if (nuevoNombre === "") {
@@ -40,7 +41,7 @@ function imprimirLista() {
 
 function evitarDuplicados(name) {
 
-    let bandera = 0;
+  /*  let bandera = 0;
 
     for (let i = 0; i < nombreAmigos.length; i++) {
         if (name === nombreAmigos[i]) {
@@ -51,7 +52,17 @@ function evitarDuplicados(name) {
     }
 
     return bandera == 1 ? true : false;
+
+       for (let i = 0; i < nombreAmigos.length; i++) {
+        if (name.toLowerCase() === nombreAmigos[i].toLowerCase()) {
+            return true;
+        }
+    }
+    return false;
+*/
+    return nombreAmigos.some(n => n.toLowerCase() === name.toLowerCase());
 }
+
 
 function sortearAmigo() {
 
