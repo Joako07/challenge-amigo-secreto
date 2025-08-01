@@ -2,20 +2,20 @@
 
 let nombreAmigos = [];
 
-function agregarAmigo(){
+function agregarAmigo() {
 
-   nuevoNombre = document.getElementById("amigo").value;
+    nuevoNombre = document.getElementById("amigo").value;
 
-    if(nuevoNombre === ""){
+    if (nuevoNombre === "") {
         alert("Por favor, inserte un nombre.");
         limpiarCaja();
-    }else if(evitarDuplicados(nuevoNombre) === true){
+    } else if (evitarDuplicados(nuevoNombre) === true) {
         alert(`El nombre ${nuevoNombre} ya existe en la lista`)
         limpiarCaja();
-    }else{
+    } else {
         nombreAmigos.push(nuevoNombre);
-         console.log(nombreAmigos);
-         limpiarCaja();
+        console.log(nombreAmigos);
+        limpiarCaja();
     }
     imprimirLista();
 }
@@ -30,25 +30,40 @@ function asignarTextos(elemento, texto) {
     lista.innerHTML = texto;
 }
 
-function imprimirLista(){
-        asignarTextos('listaAmigos','');
+function imprimirLista() {
+    asignarTextos('listaAmigos', '');
 
-        for (let i = 0; i < nombreAmigos.length; i++) {
-          listaAmigos.innerHTML += `<li id='${[i]}'> ${nombreAmigos[i]} </li>`;
-         }
+    for (let i = 0; i < nombreAmigos.length; i++) {
+        listaAmigos.innerHTML += `<li id='${[i]}'> ${nombreAmigos[i]} </li>`;
+    }
 }
 
-function evitarDuplicados(name){
-    
+function evitarDuplicados(name) {
+
     let bandera = 0;
 
-    for(let i = 0; i< nombreAmigos.length; i++){
-        if(name === nombreAmigos[i]){
-          bandera = 1 ;
-          break;
+    for (let i = 0; i < nombreAmigos.length; i++) {
+        if (name === nombreAmigos[i]) {
+            bandera = 1;
+            break;
         }
-          bandera = 0;
-        }
+        bandera = 0;
+    }
 
-    return bandera == 1? true : false;
+    return bandera == 1 ? true : false;
+}
+
+function sortearAmigo() {
+
+    if (nombreAmigos.length == 0) {
+        alert("La lista esta vacia. Debes ingresar un nombre");
+    } else {
+
+        let numAleatorio = Math.floor(Math.random() * nombreAmigos.length);
+
+        asignarTextos('listaAmigos', '');
+        asignarTextos('resultado', `El amigo secreto sorteado es: ${nombreAmigos[numAleatorio]}`);
+    }
+
+
 }
